@@ -52,6 +52,9 @@ import {Component} from "@angular/core/src/metadata/directives";
   <input type="text" class="form-control" id="fullname" required minlength="6" maxlength="24"
   [(ngModel)]="fullname" b="fullname" #b="ngModel">
    <div *ngIf="b.errors && (b.dirty || b.touched)"  class="alert alert-danger"> 
+   <div [hidden]="!a.errors.required">
+     Name is required
+  </div>
    <div [hidden]="!b.errors.minlength">
      Name must be at least 6 characters long.
   </div>
