@@ -6,6 +6,7 @@
 </head>
 <body>
 
+<div class="container">
 <h1>List of Books</h1>
    <div class="bookHolder" *ngFor="let book of books">
        <div [ngStyle]="{ 'background-image': 'url(' + book.path + ')'}" class="book " >
@@ -13,7 +14,7 @@
           <p class="title">  {{book.title}} {{book.id}} </p>
        </div>
    </div>
-
+</div>
 <!--style="background-image: url('http://www.propertyforumbudapest.com/wp-content/uploads/2014/01/Things-to-Look-For-When-Buying-Land.jpg')" -->
 </body>
 </html>
