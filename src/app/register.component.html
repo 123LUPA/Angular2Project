@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>form</title>
+</head>
+<body>
+<form novalidate (ngSubmit)="onSubmit(f)"  #f="ngForm">
+
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input
+                type="text"
+                class="form-control"
+                name="email"
+                id="email"
+                placeholder="your email"
+                ngModel
+                #userMail="ngModel"
+                minlength="6"
+                maxlength="24"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$"
+                required>
+        <div *ngIf="userMail.errors && (userMail.dirty || userMail.touched)"  class="alert alert-danger">
+
+            <div [hidden]="!userMail.errors.required">
+            Name is required
+            </div>
+            <div [hidden]="!userMail.errors.minlength">
+            Name must be at least 6 characters long.
+            </div>
+            <div [hidden]="!userMail.errors.maxlength">
+            Name cannot be more than 24 characters long.
+            </div>
+            <div [hidden]="!userMail.errors.pattern">
+            Please enter emaial in right format(yyyy@yyyy.yy)
+            </div>
+
+        </div>
+
+    </div>
+    <div class="form-group">
+
+    <label for="password">password</label>
+        <input
+                type="password"
+                class="form-control"
+                name="password"
+                id="password"
+                placeholder="your password"
+                ngModel
+                #userPassword="ngModel"
+                minlength="6"
+                maxlength="24"
+                pattern="(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                required>
+
+
+    <div *ngIf="userPassword.errors && (userPassword.dirty || userPassword.touched)"  class="alert alert-danger">
+    <div [hidden]="!userPassword.errors.required">
+    Password is required
+    </div>
+    <div [hidden]="!userPassword.errors.minlength">
+        Password must be at least 6 characters long.
+    </div>
+    <div [hidden]="!userPassword.errors.maxlength">
+        Password cannot be more than 24 characters long.
+    </div>
+    <div [hidden]="!userPassword.errors.pattern">
+    Include one capital and one number character
+    </div>
+
+    </div>
+        <div class="form-group">
+
+        <label for="name">Name</label>
+        <input
+                type="text"
+                class="form-control"
+                name="name"
+                id="name"
+                placeholder="your name"
+                ngModel
+                #userName="ngModel"
+                minlength="6"
+                maxlength="24"
+                required>
+            <div *ngIf="userName.errors && (userName.dirty || userName.touched)"  class="alert alert-danger">
+            <div [hidden]="!userName.errors.required">
+            Name is required
+            </div>
+            <div [hidden]="!userName.errors.minlength">
+            Name must be at least 6 characters long.
+            </div>
+            <div [hidden]="!userName.errors.maxlength">
+            Name cannot be more than 24 characters long.
+            </div>
+            </div>
+     </div>
+</div>
+
+    <button type="submit"[disabled]="f.invalid"  class="btn btn-success">Submit</button>
+</form>
+
+</body>
+</html>

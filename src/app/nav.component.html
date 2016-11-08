@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>nav</title>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+                <img alt="LOGO" src="">
+            </a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right ">
+
+                <li><a routerLink="/dashboard">DASHBOARD</a></li>
+                <li *ngIf="user.name == ''"><a routerLink="/login"><span class="glyphicon glyphicon-user"></span> SIGN IN</a> </li>
+                <li *ngIf="user.name == ''"><a routerLink="/register"><span class="glyphicon glyphicon-log-in" ></span> REGISTER</a></li>
+                <li *ngIf="user.name !==''"><a>{{user.name}}</a></li>
+                <li *ngIf="user.name !==''"><a (click)="logOut()">logOut</a></li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+<router-outlet></router-outlet>
+</body>
+</html>

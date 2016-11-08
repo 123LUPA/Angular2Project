@@ -3,18 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <title>hello</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
 </head>
 <body>
+<router-outlet></router-outlet>
 
-<div class="container">
+<navigationBar></navigationBar>
+<script src="../app/shared/js/dashboard.component.js"></script>
+
+<div *ngIf = "user.name==''">
+    <h1>Welcom blabla</h1>
+    <h1>Please <a routerLink="/register"><span class="glyphicon glyphicon-log-in" ></span> REGISTER</a></h1>
+{{user.name}}
+</div>
+
+<!--  text-align: center;
+-->
+<div  *ngIf="user.name !== ''"  class="container">
 <h1>List of Books</h1>
-   <div class="bookHolder" *ngFor="let book of books">
+    <!--<button routerLink="details">book details</button>-->
+
+
+
+    <div class="bookHolder" *ngFor="let book of books">
        <div [ngStyle]="{ 'background-image': 'url(' + book.path + ')'}" class="book " >
 
           <p class="title">  {{book.title}} {{book.id}} </p>
+           <div class="details">Details</div>
        </div>
-   </div>
+        <button class="myButton btn btn-info" (click)="addFavourite(book)">add to favourite</button>
+
+    </div>
 </div>
+
 <!--style="background-image: url('http://www.propertyforumbudapest.com/wp-content/uploads/2014/01/Things-to-Look-For-When-Buying-Land.jpg')" -->
 </body>
 </html>
